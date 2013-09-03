@@ -1,0 +1,91 @@
+Help on module base:
+
+NAME
+    base - # -*- coding: utf-8 -*-
+
+FILE
+    /home/sunfinite/clsearch-0.1a1/src/clsearch/base.py
+
+CLASSES
+    __builtin__.object
+        Base
+    
+    class Base(__builtin__.object)
+     |  Provides helper functions to both Index and Search
+     |  
+     |  Methods defined here:
+     |  
+     |  __del__(self)
+     |  
+     |  __init__(self, dbPrefix=None, fout=<open file '<stdout>', mode 'w'>)
+     |      Creates the sqlite database if not already present.
+     |      Input:
+     |          dbPrefix: The directory where the database will be created.
+     |                    Defaults to ~/.clsearch.
+     |          fout: Write all output to this stream. Defaults to stdout
+     |      
+     |      *Schema:
+     |          -Media:
+     |              +path: the absolute path to the file
+     |              +format: extensions. Makes for faster search by type.
+     |          
+     |          -Words:
+     |              +word: unicode string
+     |              +df: document frequency. Incremented for each occurence 
+     |                  of the word. Used as IDF in TF-IDF
+     |      
+     |          -Tags:
+     |              +tag: tag name. Either id3 or xmp.
+     |      
+     |          -Frequency:
+     |              +wordid: Foreign key to the Words table
+     |              +mediaid: Foreign key to the Media table
+     |              +tagid: Foreign key to the Tags table
+     |              +frequency: term frequency(TF). normalized frequency of word
+     |                          in the string being indexed. Calculated as:
+     |                          number of occurences of word in string /
+     |                          length of string
+     |      
+     |                          Note:
+     |                          String can be file name or tag values
+     |                          tagid is 0 for words appearing in file name.
+     |  
+     |  get_split_string(self)
+     |          Splitting on [\W_]+ causes loss of characters because re
+     |          in 2.x considers combining forms in unicode to be non-alphanumeric
+     |      
+     |      Eg: 1.  In [34]: re.split(ur"[\W_]+", 'Sigur Rós')
+     |              Out[34]: ['Sigur', 'R', 's']
+     |      
+     |          2.  In [42]: split_string = i.get_split_string()
+     |      
+     |              In [43]: re.split(split_string, 'Sigur Rós')
+     |              Out[43]: ['Sigur', 'RÃ³s']
+     |      
+     |          Although this solution is crude, it should work in most of the
+     |          cases.
+     |      
+     |          Builds and returns a string consisting of all non-alphanumeric 
+     |          characters from ASCII 0 to 126
+     |  
+     |  to_unicode(self, str_)
+     |      The standard unicode function was not 
+     |      sufficient because of the odd file encoded in 
+     |      latin-1
+     |      
+     |      Takes a <type 'str'> and returns a <type 'unicode'>
+     |      by trying to decode it using utf-8 or latin-1
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+DATA
+    division = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192...
+
+

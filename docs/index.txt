@@ -1,0 +1,114 @@
+Help on module index:
+
+NAME
+    index - # -*- coding: utf-8 -*-
+
+FILE
+    /home/sunfinite/clsearch-0.1a1/src/clsearch/index.py
+
+CLASSES
+    clsearch.base.Base(__builtin__.object)
+        Index
+    
+    class Index(clsearch.base.Base)
+     |  - Inherits and extends Base
+     |  - Walks through specified directory. ~ by default
+     |  - Populates database 
+     |  - Extracts metadata tags
+     |  
+     |  Method resolution order:
+     |      Index
+     |      clsearch.base.Base
+     |      __builtin__.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, quiet=False, fileTypes=[], dbPrefix=None, fout=<open file '<stdout>', mode 'w'>)
+     |      - Checks if xmp libraries are present
+     |      - Calls Base parent class constructor with 
+     |        dbPrefix and fout input options
+     |      
+     |      Input:
+     |          quiet: Don't display blow-by-blow details of indexing.
+     |             False by default.
+     |          fileTypes: Additional types to be searched and indexing
+     |             along with mp3, aac, ogg, avi, mkv and mp4
+     |          dbPrefix: Argument to parent constructor. Specificies the 
+     |             directory where the sqlite database will be created.
+     |              ~ by default.
+     |          fout: Argument to parent constructor. Specified stream to which
+     |              all output will be written to.
+     |  
+     |  add_to_index(self, path)
+     |          - Add a given file to the database.
+     |          - Convert filename to unicode string.
+     |          - If file is already in database, return False.
+     |          - If not, add filename to Media table.
+     |          - Add words in filename to Words table.
+     |          - Get id3 and xmp tags.
+     |          - Add tag keys to Tags table.
+     |          - Add words in tag values to Words table.
+     |      
+     |      Input:
+     |          path: file to be added
+     |  
+     |  get_id3_tags(self, fileName)
+     |      Code taken from 'Dive Into Python' and genre list lookup has been added
+     |       
+     |      Input:
+     |          fileName: get tags for this file
+     |  
+     |  get_xmp_tags(self, fileName)
+     |      Input:
+     |          fileName: get tags for this file
+     |  
+     |  index(self, dirName=None)
+     |      - The function called by the script to index files.
+     |      - Uses os.path.walk to recurse through the directory structure.
+     |      - If a file has any of the given filetypes at the end,
+     |        call add_to_index() with that filename.
+     |      - Measure time taken for the walk function to return, 
+     |        including time to index files.
+     |      - Print summary of indexing: 
+     |         number of files read from the counter class attribute.
+     |      - Reset index counter to 0.
+     |      
+     |      Input:
+     |          dirName: The directory given as input to
+     |              os.path.walk. ~ by default.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from clsearch.base.Base:
+     |  
+     |  __del__(self)
+     |  
+     |  get_split_string(self)
+     |      Splitting on [\W_]+ causes loss of characters because re
+     |       in 2.x considers combining forms in unicode to be non-alphanumeric
+     |      
+     |      Eg: 1.  In [34]: re.split(ur"[\W_]+", 'Sigur Rós')
+     |              Out[34]: ['Sigur', 'R', 's']
+     |      
+     |          2.  In [42]: split_string = i.get_split_string()
+     |      
+     |              In [43]: re.split(split_string, 'Sigur Rós')
+     |              Out[43]: ['Sigur', 'R\xc3\xb3s']
+     |      
+     |          Although this solution is crude, it should work in most of the
+     |          cases.
+     |  
+     |  to_unicode(self, str_)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from clsearch.base.Base:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+DATA
+    division = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192...
+
+

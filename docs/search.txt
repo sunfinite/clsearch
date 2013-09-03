@@ -1,0 +1,106 @@
+Help on module search:
+
+NAME
+    search - # -*- coding: utf-8 -*-
+
+FILE
+    /home/sunfinite/clsearch-0.1a1/src/clsearch/search.py
+
+CLASSES
+    clsearch.base.Base(__builtin__.object)
+        Search
+    
+    class Search(clsearch.base.Base)
+     |  - Inherits and extends Base
+     |  - Search a given query, first by type
+     |    and then in name and tags
+     |  - Print output under different sections
+     |  
+     |  Method resolution order:
+     |      Search
+     |      clsearch.base.Base
+     |      __builtin__.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, dbPrefix=None, fout=<open file '<stdout>', mode 'w'>)
+     |      - Calls Base parent class constructor with 
+     |        dbPrefix and fout input options
+     |        
+     |      Input: 
+     |          dbPrefix: Argument to parent constructor. Specificies the 
+     |             directory where the sqlite database will be created.
+     |              ~ by default.
+     |          fout: Argument to parent constructor. Specified stream to which
+     |              all output will be written to.
+     |  
+     |  normalize_query(self, query)
+     |      - Returns list of individual terms in query
+     |      - Uses the same split string as the index function.
+     |      
+     |      Input:
+     |          query
+     |  
+     |  search(self, query)
+     |      - First performs search by format
+     |      - If any word begins with a ".", it is considered
+     |        and extension type and searched.
+     |      - normalize_query is then called to get individual
+     |        terms
+     |      - A dictionary is built with hit paths as keys
+     |      - For each path, TF-IDF score is calculated as the sum
+     |        of the TF and 1/DF of each term of the query
+     |        which is a part of the path, either in name or tag.
+     |      - tagSet is a set of all tagids for each path 
+     |      - __print_results function looks up tagids and substitues
+     |        appropriate tag names
+     |      - If 0 is part of tagSet, it is a direct hit
+     |      
+     |      Input: 
+     |          query who terms should be searched
+     |  
+     |  search_by_format(self, format_)
+     |      Search and print immediately by looking-up 
+     |      format column in Words
+     |      
+     |      Returns True if there was atleast one hit, used to
+     |      account in the final hit score.
+     |       
+     |      Input:
+     |          format
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from clsearch.base.Base:
+     |  
+     |  __del__(self)
+     |  
+     |  get_split_string(self)
+     |      Splitting on [\W_]+ causes loss of characters because re
+     |       in 2.x considers combining forms in unicode to be non-alphanumeric
+     |      
+     |      Eg: 1.  In [34]: re.split(ur"[\W_]+", 'Sigur Rós')
+     |              Out[34]: ['Sigur', 'R', 's']
+     |      
+     |          2.  In [42]: split_string = i.get_split_string()
+     |      
+     |              In [43]: re.split(split_string, 'Sigur Rós')
+     |              Out[43]: ['Sigur', 'R\xc3\xb3s']
+     |      
+     |          Although this solution is crude, it should work in most of the
+     |          cases.
+     |  
+     |  to_unicode(self, str_)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from clsearch.base.Base:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+DATA
+    division = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192...
+
+

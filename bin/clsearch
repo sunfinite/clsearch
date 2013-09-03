@@ -1,0 +1,74 @@
+#!/usr/bin/env python
+
+#FIXME: Even though deprecated, use this to work with <2.7
+from optparse import OptionParser
+usage = """
+        %prog -i|--index [-d|--dir <directory>] [-t|--types <types>] [-q|--quiet] 
+        %prog -s|--search <query>
+        %prog -h|--help
+
+    Examples:
+        %prog -i
+        %prog -i -d /home/example/Music/Awesome/
+        %prog -i -t flv,txt
+        %prog -i -t "flv txt jpg"
+        
+        %prog -s lazarus
+        %prog -s "rock and roll"
+
+    Note:
+        1. For xmp tags to be indexed, python-xmp-toolkit and it's dependency Exempy 2.1.1 have to be installed.        2. The indexing operation can be performed any number of times. Only new files are indexed each time.
+"""
+parser = OptionParser(usage = usage, version = "%prog 0.1")
+
+parser.add_option("-i", "--index", 
+                  dest="index", 
+                  action = "store_true",
+                  help="Index filename and id3 and xmp tags if present. Searches for new files and indexes them.")
+
+parser.add_option("-d", "--dir", 
+                  dest="directory", 
+                  help="The directory to be searched for files. Defaults to '~' if not specified.")
+
+parser.add_option("-t", "--types", 
+                  dest="types", 
+                  help="Additional file types to index. By default mp3,aac,ogg,avi,mkv,mp4 files are indexed.")
+
+parser.add_option("-s", "--search", dest="query", 
+                  help="Search and return file paths ranked by TF-IDF.")
+
+parser.add_option("-q", "--quiet", 
+                  dest="quiet", 
+                  default=False,
+                  action = "store_true",
+                  help="Don't print indexed files to stdout.")
+
+(options, args) = parser.parse_args()
+
+try:
+    if not options.index and not options.query:
+        parser.print_help() 
+
+    if options.index and options.query:
+        parser.error("Index and search cannot be done together")
+
+    if not options.index and (options.types or options.directory):
+        parser.error("-i not specified")
+
+    if options.index:
+        import re
+        if options.types:
+            types = filter(lambda x: x, 1 and re.split(ur"[, ]+", options.types))
+        else:
+            types = []
+        from clsearch.index import Index
+        i = Index(options.quiet, types) 
+        i.index(options.directory)
+
+    elif options.query:
+        from clsearch.search import Search
+        s = Search()
+        s.search(options.query)
+
+except Exception, e:
+    print e

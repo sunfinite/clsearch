@@ -1,0 +1,2 @@
+include docs/*
+include src/clsearch/test/data/*
