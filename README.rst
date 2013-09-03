@@ -1,14 +1,17 @@
-========
 CLSearch
 ========
 
 Installation
-------------
+-------------
+::
+
     tar -zxvf clsearch<version>.tar.gz
     python setup.py install
     
-    For XMP metada:
-    --------------
+For XMP metada:
+----------------
+::
+
     pip install python-xmp-toolkit 
     (which in turn needs exempi
     On Ubuntu:
@@ -17,9 +20,11 @@ Installation
 
 Usage:
 ------ 
-        clsearch -i|--index [-d|--dir <directory>] [-t|--types <types>] [-q|--quiet] 
-        clsearch -s|--search <query>
-        clsearch -h|--help
+::
+
+    clsearch -i|--index [-d|--dir <directory>] [-t|--types <types>] [-q|--quiet] 
+    clsearch -s|--search <query>
+    clsearch -h|--help
 
     Examples:
         clsearch -i
@@ -65,7 +70,7 @@ test_search.py
 
 
 Though each test can be run separately, running 
-    python test_search.py
+``python test_search.py``
 will run all tests because it inherits from IndexTest
 which in turn inherits from BaseTest.
 
