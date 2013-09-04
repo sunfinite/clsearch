@@ -9,11 +9,12 @@ for these files by name or metadata(currently id3 and xmp).
 The results are ranked using TF-IDF scores with results split into filetype results(ex. search ".mp3"), 
 direct results(query terms in name of the file) and tag results(query terms in any of the metadata tags)
 
-Tested with python 2.6.5 and python 2.7.5.
+Tested with python 2.6.5 and python 2.7.5 on linux.
 
 Installation
 -------------
 ::
+       
     From source:
 
     Package is located in dist/clsearch*.tar.gz on github
@@ -33,11 +34,11 @@ For XMP metadata:
 ::
 
     #pip install python-xmp-toolkit 
-    (which in turn needs exempi
-    On Ubuntu:
-    #apt-get install libexempi3
-    )
 
+    This in turn needs exempi. On Ubuntu:
+
+    #apt-get install libexempi3
+    
 Usage:
 ------ 
 ::
