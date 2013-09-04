@@ -3,22 +3,30 @@ CLSearch
 
 Description
 ------------
-clsearch indexes files of the specified types(and the default types mentioned above) and makes it to search 
+clsearch indexes files of the specified types(and the default types: mp3,aac,ogg,avi,mkv,mp4) and makes it easy to search 
 for these files by name or metadata(currently id3 and xmp).
 
-The results are ranked using TF-IDF scores with results split into filetype results(ex. search ".mp3"), direct results(query terms in name of the file) and tag results(query terms in any of the metadata tags)
+The results are ranked using TF-IDF scores with results split into filetype results(ex. search ".mp3"), 
+direct results(query terms in name of the file) and tag results(query terms in any of the metadata tags)
 
 Tested with python 2.6.5 and python 2.7.5.
 
 Installation
 -------------
 ::
+    From source:
 
-    Package is in dist/clsearch*.tar.gz
+    Package is located in dist/clsearch*.tar.gz on github
     (NOTE: Hit view raw and download)
 
     #python setup.py install
-    (sudo access is needed if installing system-wide)
+    
+    or
+    
+    From PyPI:
+
+    #pip install clsearch
+
     
 For XMP metadata:
 -----------------
