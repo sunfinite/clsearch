@@ -41,6 +41,8 @@ class Index(Base):
         self.quiet = quiet
         self.fileTypes = ["mp3", "aac", "ogg", "avi", "mkv", "mp4"] + fileTypes
         self.counter = 0
+        super(Index, self).__init__(dbPrefix, fout)
+
     def index(self, dirName = None):
         """
             - The function called by the script to index files.
