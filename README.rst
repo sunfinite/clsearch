@@ -8,6 +8,8 @@ for these files by name or metadata(currently id3 and xmp).
 
 The results are ranked using TF-IDF scores with results split into filetype results(ex. search ".mp3"), direct results(query terms in name of the file) and tag results(query terms in any of the metadata tags)
 
+Tested with python 2.6.5 and python 2.7.5.
+
 Installation
 -------------
 ::
@@ -66,11 +68,7 @@ Usage:
 
 Tests
 -----
-Unit tests located in src/clsearch/test:
-* **test_base.py**
-* **test_index.py**
-* **test_search.py**
-
+Unit tests are located in src/clsearch/test.
 
 Though each test can be run separately, running 
 ``$python test_search.py``
