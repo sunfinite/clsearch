@@ -43,7 +43,8 @@ Usage:
         clsearch -s "rock and roll"
 
     Note:
-        1. For xmp tags to be indexed, python-xmp-toolkit and it's dependency Exempy 2.1.1 have to be installed.        2. The indexing operation can be performed any number of times. Only new files are indexed each time.
+        1. For xmp tags to be indexed, python-xmp-toolkit and it's dependency Exempy 2.1.1 have to be installed.
+        2. The indexing operation can be performed any number of times. Only new files are indexed each time.
 
     Options:
       --version             show program's version number and exit
