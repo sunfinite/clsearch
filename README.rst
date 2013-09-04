@@ -1,15 +1,22 @@
 CLSearch
 ========
 
+Description
+------------
+clsearch indexes files of the specified types(and the default types mentioned above) and makes it to search 
+for these files by name or metadata(currently id3 and xmp).
+
+The results are ranked using TF-IDF scores with results split into filetype results(ex. search ".mp3"), direct results(query terms in name of the file) and tag results(query terms in any of the metadata tags)
+
 Installation
 -------------
 ::
 
-    tar -zxvf clsearch<version>.tar.gz
+    Package is in dist/clsearch*.tar.gz
     python setup.py install
     
-For XMP metada:
-----------------
+For XMP metadata:
+-----------------
 ::
 
     pip install python-xmp-toolkit 
@@ -54,12 +61,6 @@ Usage:
       -q, --quiet           Don't print indexed files to stdout.  
 
 
-Description
-------------
-clsearch indexes files of the specified types(and the default types mentioned above) and makes it to search 
-for these files by name or metadata(currently id3 and xmp).
-
-The results are ranked using TF-IDF scores with results split into filetype results(ex. search ".mp3"), direct results(query terms in name of the file) and tag results(query terms in any of the metadata tags)
 
 Tests
 -----
