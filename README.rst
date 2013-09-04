@@ -15,6 +15,8 @@ Installation
 ::
 
     Package is in dist/clsearch*.tar.gz
+    (NOTE: Hit view raw and download)
+
     #python setup.py install
     (sudo access is needed if installing system-wide)
     
