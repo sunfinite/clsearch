@@ -13,34 +13,35 @@ Installation
 ::
 
     Package is in dist/clsearch*.tar.gz
-    python setup.py install
+    #python setup.py install
+    (sudo access is needed if installing system-wide)
     
 For XMP metadata:
 -----------------
 ::
 
-    pip install python-xmp-toolkit 
+    #pip install python-xmp-toolkit 
     (which in turn needs exempi
     On Ubuntu:
-    apt-get install libexempi3
+    #apt-get install libexempi3
     )
 
 Usage:
 ------ 
 ::
 
-    clsearch -i|--index [-d|--dir <directory>] [-t|--types <types>] [-q|--quiet] 
-    clsearch -s|--search <query>
-    clsearch -h|--help
+    $clsearch -i|--index [-d|--dir <directory>] [-t|--types <types>] [-q|--quiet] 
+    $clsearch -s|--search <query>
+    $clsearch -h|--help
 
     Examples:
-        clsearch -i
-        clsearch -i -d /home/example/Music/Awesome/
-        clsearch -i -t flv,txt
-        clsearch -i -t "flv txt jpg"
+        $clsearch -i
+        $clsearch -i -d /home/example/Music/Awesome/
+        $clsearch -i -t flv,txt
+        $clsearch -i -t "flv txt jpg"
         
-        clsearch -s lazarus
-        clsearch -s "rock and roll"
+        $clsearch -s lazarus
+        $clsearch -s "rock and roll"
 
     Note:
         1. For xmp tags to be indexed, python-xmp-toolkit and it's dependency Exempy 2.1.1 have to be installed.
@@ -66,13 +67,13 @@ Usage:
 Tests
 -----
 Unit tests located in src/clsearch/test:
-test_base.py
-test_index.py
-test_search.py
+**test_base.py**
+**test_index.py**
+**test_search.py**
 
 
 Though each test can be run separately, running 
-``python test_search.py``
+``$python test_search.py``
 will run all tests because it inherits from IndexTest
 which in turn inherits from BaseTest.
 
