@@ -67,9 +67,9 @@ Usage:
 Tests
 -----
 Unit tests located in src/clsearch/test:
-**test_base.py**
-**test_index.py**
-**test_search.py**
+* **test_base.py**
+* **test_index.py**
+* **test_search.py**
 
 
 Though each test can be run separately, running 
