@@ -16,9 +16,6 @@ Installation
        
     From source:
 
-    Package is located in dist/clsearch*.tar.gz on github
-    (NOTE: Hit view raw and download)
-
     #python setup.py install
     
     or
