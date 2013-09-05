@@ -1,7 +1,7 @@
 from distutils.core import setup
 
 setup(name = 'clsearch',
-    version = '0.1a2',
+    version = '0.1a1',
     description = 'Index and search files from command line, including id3 and xmp tags.',
     author = 'sunfinite',
     author_email = 'sunfinite@gmail.com',
