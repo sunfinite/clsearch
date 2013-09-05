@@ -41,6 +41,8 @@ class Index(Base):
         self.quiet = quiet
         self.fileTypes = ["mp3", "aac", "ogg", "avi", "mkv", "mp4"] + fileTypes
         self.counter = 0
+        super(Index, self).__init__(dbPrefix, fout)
+
     def index(self, dirName = None):
         """
             - The function called by the script to index files.
@@ -60,7 +62,7 @@ class Index(Base):
             
         if dirName:
             dirName = os.path.abspath(dirName)
-        dirName = 1 and dirName or os.path.expanduser("~")
+        dirName = dirName or os.path.expanduser("~")
 
         def crawl(args, dName, fNames):
             if not self.quiet:

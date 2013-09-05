@@ -3,47 +3,61 @@ CLSearch
 
 Description
 ------------
-clsearch indexes files of the specified types(and the default types mentioned above) and makes it to search 
-for these files by name or metadata(currently id3 and xmp).
+clsearch indexes files of the specified types(and the default types: mp3,aac,ogg,avi,mkv,mp4) and makes it easy to search for these files by name or metadata(currently id3 and xmp).
 
-The results are ranked using TF-IDF scores with results split into filetype results(ex. search ".mp3"), direct results(query terms in name of the file) and tag results(query terms in any of the metadata tags)
+The results are ranked using TF-IDF scores with results split into filetype results(ex. search ".mp3"), 
+direct results(query terms in name of the file) and tag results(query terms in any of the metadata tags)
+
+Tested with python 2.6.5 and python 2.7.5 on linux.
 
 Installation
 -------------
 ::
+       
+    From source:
 
-    The package is in dist/clsearch.tar.gz
-    python setup.py install
+    Package is located in dist/clsearch*.tar.gz on github
+    (NOTE: Hit view raw and download)
+
+    #python setup.py install
     
-For XMP metada:
+    or
+    
+    From PyPI:
+
+    #pip install clsearch
+
+    
+XMP metadata:
 ----------------
 ::
 
-    pip install python-xmp-toolkit 
-    (which in turn needs exempi
-    On Ubuntu:
-    apt-get install libexempi3
-    )
+    #pip install python-xmp-toolkit 
 
+    This in turn needs exempi. On Ubuntu:
+
+    #apt-get install libexempi3
+    
 Usage:
 ------ 
 ::
 
-    clsearch -i|--index [-d|--dir <directory>] [-t|--types <types>] [-q|--quiet] 
-    clsearch -s|--search <query>
-    clsearch -h|--help
+    $clsearch -i|--index [-d|--dir <directory>] [-t|--types <types>] [-q|--quiet] 
+    $clsearch -s|--search <query>
+    $clsearch -h|--help
 
     Examples:
-        clsearch -i
-        clsearch -i -d /home/example/Music/Awesome/
-        clsearch -i -t flv,txt
-        clsearch -i -t "flv txt jpg"
+        $clsearch -i
+        $clsearch -i -d /home/example/Music/Awesome/
+        $clsearch -i -t flv,txt
+        $clsearch -i -t "flv txt jpg"
         
-        clsearch -s lazarus
-        clsearch -s "rock and roll"
+        $clsearch -s lazarus
+        $clsearch -s "rock and roll"
 
     Note:
-        1. For xmp tags to be indexed, python-xmp-toolkit and it's dependency Exempy 2.1.1 have to be installed.         2. The indexing operation can be performed any number of times. Only new files are indexed each time.
+        1. For xmp tags to be indexed, python-xmp-toolkit and it's dependency Exempy 2.1.1 have to be installed.
+        2. The indexing operation can be performed any number of times. Only new files are indexed each time.
 
     Options:
       --version             show program's version number and exit
@@ -64,14 +78,10 @@ Usage:
 
 Tests
 -----
-Unit tests located in src/clsearch/test:
-test_base.py
-test_index.py
-test_search.py
-
+Unit tests are located in src/clsearch/test.
 
 Though each test can be run separately, running 
-``python test_search.py``
+``$python test_search.py``
 will run all tests because it inherits from IndexTest
 which in turn inherits from BaseTest.
 
