@@ -103,7 +103,7 @@ class Search(Base):
                 self.fout.write("Also in tags: %s"\
                 % (",".join([tagNames[tag - 1][0] for tag in result[1][1]])))
 
-        print "\nTag Results:\n"
+        self.fout.wirte("\nTag Results:\n\n")
 
         for result in tResults:
             self.fout.write(result[0])
